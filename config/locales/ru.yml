@@ -1,0 +1,16 @@
+ru:
+  base_title: 'События'
+  hello: 'Привет мир'
+  sure?: 'Вы уверены?'
+  project_name: 'События'
+  activerecord:
+    attributes:
+      user:
+        login: 'Псевдоним или электронная почта'
+        email: 'Электронная почта'
+        password: 'Пароль'
+        current_password: 'Текущий пароль'
+        fio: 'Полное имя'
+        password_confirmation: 'Подтверждение пароля'
+        remember_me: 'Запомнить'
+

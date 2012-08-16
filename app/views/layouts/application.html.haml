@@ -1,0 +1,19 @@
+!!!
+%html
+  %head
+    = render 'layouts/head'
+  %body
+
+    = render 'layouts/navigation'
+
+    .container
+      .row
+        - if user_signed_in?
+          .span3
+            There is some text...
+          .span9
+            = yield
+        - else
+          .span12
+            = yield
+

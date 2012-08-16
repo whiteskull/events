@@ -1,0 +1,46 @@
+// tags
+h1 {
+	margin-bottom: 15px;
+}
+// override bootstrap
+.form-horizontal {
+	.controls, .actions {
+		margin-left: 180px;
+	}
+	.control-label {
+		width: 160px;
+	}
+}
+// devise
+#devise {
+	margin: 0 auto;
+	width: 400px;
+
+	h1 {
+		text-align: center;
+		margin-bottom: 40px;
+	}
+	form {
+		margin-left: -30px;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

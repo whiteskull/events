@@ -1,0 +1,14 @@
+#devise
+  %h1= t 'devise.messages.forgot_password'
+
+  #form-detail
+    = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:method => :post, :class => 'form-horizontal'}) do |f|
+
+      .control-group
+        .control-label
+          = f.label :email
+        .controls
+          = f.email_field :email
+
+      .controls
+        = f.submit t('errors.messages.instruction_for_password'), :class => 'btn btn-info'

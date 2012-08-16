@@ -1,0 +1,18 @@
+%title= title
+
+-# Meta tags
+%meta{:charset => "utf-8"}
+%meta{:content => "", :name => "keywords"}
+%meta{:content => "", :name => "description"}
+= csrf_meta_tags
+
+-# styles
+= stylesheet_link_tag 'application', :media => "all"
+- unless controller_name =~ /\Adevise/
+  = stylesheet_link_tag controller_name
+
+-# scripts
+= javascript_include_tag 'application'
+- unless controller_name =~ /\Adevise/
+  = javascript_include_tag controller_name
+

@@ -1,0 +1,46 @@
+%h1
+  = t 'devise.messages.profile'
+
+= form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => {:method => :put, :class => 'form-horizontal'}  do |f|
+  = devise_error_messages!
+
+  .control-group
+    .control-label
+      = f.label :fio
+    .controls
+      = f.text_field :fio
+
+  .control-group
+    .control-label
+      = f.label :email
+    .controls
+      = f.email_field :email
+
+  .control-group
+    .control-label
+      = f.label :password
+    .controls
+      = f.password_field :password, :autocomplete => "off"
+      %span.help-inline= t 'devise.messages.notices.password_blank'
+
+  .control-group
+    .control-label
+      = f.label :password_confirmation
+    .controls
+      = f.password_field :password_confirmation
+
+  .control-group
+    .control-label
+      = f.label :current_password
+    .controls
+      = f.password_field :current_password
+      %span.help-inline= t 'devise.messages.notices.password_current'
+
+  .controls
+    = f.submit t('devise.messages.update'), :class => 'btn btn-info'
+
+%h3= t('devise.messages.canceling')
+
+%p= link_to t('devise.messages.cancel'), registration_path(resource_name), :data => { :confirm => t('sure?') }, :method => :delete
+
+= link_to t('devise.messages.back'), :back
