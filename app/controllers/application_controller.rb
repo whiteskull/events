@@ -1,7 +1,15 @@
 class ApplicationController < ActionController::Base
+
+  before_filter :set_locale
+
   protect_from_forgery
 
-  # Change view errors in form
+  # set current locale
+  def set_locale
+    I18n.locale = cookies['lang'] if cookies['lang'].present?
+  end
+
+  # change view errors in form
   ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
     if instance.error_message.kind_of?(Array)
       html_tag.gsub! 'input', 'input class="error"'

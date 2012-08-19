@@ -1,0 +1,22 @@
+%h2
+  = t 'events_on'
+  = events_date @date[:day], @date[:month], @date[:year]
+
+#events-day
+  - if @events[@date[:day]].present?
+    - @events[@date[:day]].each do |i|
+      - if i.public || i.user_id == current_user.id
+        %p.event{ :class => if i.user_id == current_user.id then 'my' else 'other' end }
+          - if i.user_id == current_user.id
+            = link_to i.name, '#edit-event',
+                        :data => { :toggle => 'modal', :id => i.id }
+          - else
+            - if i.public
+              = i.name
+  - else
+    = t 'events_no'
+
+  %p.add-day-event
+    = link_to t('add'), '#add-event', :class => 'btn btn-success',
+          :data => { :toggle => 'modal', :day => @date[:day], :month => @date[:month], :year => @date[:year] }
+

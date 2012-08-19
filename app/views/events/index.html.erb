@@ -1,0 +1,101 @@
+<% if flash[:success_add_event] %>
+  <div class="alert alert-success" style="width: 812px;">
+    <button class="close" data-dismiss="alert">×</button>
+    <%= flash[:success_add_event] %>
+  </div>
+<% end %>
+
+<table id="calendar">
+  <% month = :last %>
+  <% day = 0 %>
+
+  <% 7.times do |i| %>
+    <% if i == 0 %>
+      <thead>
+    <% end %>
+    <% if i == 1 %>
+      </thead>
+      <tbody>
+    <% end %>
+    <tr>
+      <% 7.times do |j| %>
+        <td>
+          <% if i == 0 %>
+            <div class="day-week">
+              <%= t 'day_' << (j + 1).to_s %>
+            </div>
+          <% else %>
+            <% if i == 1 %>
+              <% if month == :last && j >= @date[:first_day] %>
+                <% month = :current %>
+              <% end %>
+            <% end %>
+            <% if month == :current && day < @date[:last_day_current_month] %>
+              <div class="current<%= ' weekends' if j >= 5 %><%= ' today' if day == @date[:day] - 1 %>">
+                <div class="date" data-id="current">
+                  <%= day += 1 %>
+                </div>
+                <div class="add">
+                  <%= link_to t('add'), '#add-event', :class => 'btn btn-success btn-mini',
+                              :data => { :toggle => 'modal', :day => day, :month => @date[:month], :year => @date[:year] } %>
+                </div>
+                <div class="events">
+                  <% if @events[day].present? %>
+                    <% @events[day].each do |i| %>
+                      <% if i.public || i.user_id == current_user.id %>
+                        <p class="event<%= check_old_events(day, @date[:month], @date[:year]) %><%= (i.user_id == current_user.id) ? ' my' : ' other' %>" title="<%= i.name %>">
+                          <% if i.user_id == current_user.id %>
+                            <%= link_to i.name, '#edit-event',
+                                        :data => { :toggle => 'modal', :id => i.id } %>
+                          <% else %>
+                            <% if i.public %>
+                              <%= i.name %>
+                            <% end %>
+                          <% end %>
+                        </p>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            <% elsif month == :last %>
+              <div class="last">
+                <div class="date" data-id="last">
+                  <%= @date[:last_day_last_month] - ( @date[:first_day] - j - 1 ) %>
+                </div>
+              </div>
+            <% else %>
+              <div class="next">
+                <% day += 1 %>
+                <div class="date" data-id="next">
+                  <%= day - @date[:last_day_current_month] %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+
+  </tbody>
+</table>
+
+<div class="modal hide" id="add-event">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3><%= t 'add_event' %> <span class="date"></span></h3>
+  </div>
+  <div class="modal-body">
+  </div>
+</div>
+
+<div class="modal hide" id="edit-event">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3><%= t 'edit_event' %> <span class="date"></span></h3>
+  </div>
+  <div class="modal-body">
+  </div>
+</div>
+

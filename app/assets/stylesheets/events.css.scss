@@ -1,3 +1,168 @@
-// Place all the styles related to the events controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "settings.scss";
+
+#calendar {
+
+	margin-bottom: 20px;
+
+	thead {
+		td {
+			border-top: 1px solid $calendarBorderColor;
+		}
+	}
+	td {
+		border-bottom: 1px solid $calendarBorderColor;
+		border-right: 1px solid $calendarBorderColor;
+		padding: 0;
+
+		&:first-child {
+			border-left: 1px solid $calendarBorderColor;
+		}
+	}
+
+	div.day-week, div.current, div.last, div.next {
+
+		overflow: hidden;
+
+		width: 122px;
+		text-align: center;
+
+		div.date {
+			border: 1px solid #ddf;
+			position: absolute;
+			right: 5px;
+			top: 5px;
+			width: 20px;
+			height: 20px;
+			line-height: 20px;
+			text-align: center;
+			font-style: 16px;
+			font-weight: bold;
+			cursor: pointer;
+		}
+	}
+	div.day-week {
+		background-color: $dayWeekColor;
+		height: 30px;
+		line-height: 30px;
+	}
+	div.current, div.last, div.next {
+		position: relative;
+		height: 122px;
+	}
+	div.last, div.next {
+		background-color: $othersDayColor;
+
+		div.date {
+			background-color: $dateColor + #09a;
+		}
+	}
+	div.current {
+
+		background-color: $currentDayColor;
+
+		div.events {
+
+			padding-top: 30px;
+			padding-left: 5px;
+
+			p.event {
+				color: #fff;
+				text-align: left;
+				white-space: nowrap;
+				margin: 0 0 2px;
+				padding-left: 3px;
+
+				&.other {
+					background-color: #2a2f5d;
+
+					&:hover {
+						background-color: #373e7a;
+					}
+					&.old {
+						background-color: #0a0a1eo;
+						color: #ccc;
+					}
+				}
+				&.my {
+					background-color: #1a5d35;
+					cursor: pointer;
+
+					a {
+						color: #fff;
+						display: block;
+
+						&:hover {
+							text-decoration: none;
+						}
+					}
+					&.old {
+						background-color: #124226;
+
+						a {
+							color: #ccc;
+						}
+					}
+					&:hover {
+						background-color: #248049;
+					}
+				}
+			}
+		}
+		div.add {
+			position: absolute;
+			top: -40px;
+			left: 10px;
+		}
+		div.date {
+			background-color: $dateColor;
+		}
+		&.weekends {
+			background-color: $weekendsColor;
+		}
+		&.today {
+			background-color: $todayColor;
+
+			div.date {
+				background-color: $dateColor - #00f;
+			}
+		}
+	}
+}
+
+div#events-day {
+	margin-top: 20px;
+	
+	p.add-day-event {
+		margin-top: 20px;
+	}
+	p.event {
+		color: #fff;
+		padding: 2px 3px;
+		line-height: 13px;
+
+		&.other {
+			background-color: #2a2f5d;
+
+			&:hover {
+				background-color: #373e7a;
+			}
+		}
+		&.my {
+			background-color: #1a5d35;
+			cursor: pointer;
+
+			a {
+				color: #fff;
+				display: block;
+
+				&:hover {
+					text-decoration: none;
+				}
+			}
+			&:hover {
+				background-color: #248049;
+			}
+		}
+	}
+}
+

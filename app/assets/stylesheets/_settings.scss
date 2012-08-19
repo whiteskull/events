@@ -1,0 +1,30 @@
+// global setting
+@mixin rounded_corners($radius) {
+	-moz-border-radius: $radius;
+	-webkit-border-radius: $radius;
+	border-radius: $radius;
+}
+@mixin rounded_corners_exp($tl, $tr, $br, $bl) {
+	-moz-border-radius: $tl $tr $br $bl;
+	-webkit-border-radius: $tl $tr $br $bl;
+	border-radius: $tl $tr $br $bl;
+}
+@mixin shadow($x, $y, $radius, $color) {
+	-webkit-box-shadow: $x $y $radius $color;
+	-moz-box-shadow: $x $y $radius $color;
+	box-shadow: $x $y $radius $color;
+}
+
+$ie8: "\0/";
+
+// Project settings
+$calendarBorderColor: #ddd;
+$currentDayColor: #e1f5ff;
+$weekendsColor: #fff3da;
+$othersDayColor: #eee;
+$dayWeekColor: #c1ffba;
+$todayColor: #a3ffba;
+$dateColor: #fffa98;
+
+
+

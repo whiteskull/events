@@ -1,0 +1,29 @@
+= form_for @event, :html => {:class => 'ajax form-horizontal'} do |f|
+
+  .control-group
+    = f.label :name, t('event_name'), :class => 'control-label'
+    .controls
+      = f.text_field :name
+
+  .control-group
+    = f.label :public, t('public'), :class => 'control-label'
+    .controls
+      = f.check_box :public, :checked => (params[:event].present?) ? (params[:event][:public] == '1') ? true : false : (@event.public == true) ? true : false
+
+  .control-group
+    = f.label :next_time, t('repeat'), :class => 'control-label'
+    .controls
+      - 5.times do |i|
+        %label.radio
+          = f.radio_button :next_time, i,
+                           :checked => (params[:event].present?) ? (i == params[:event][:next_time].to_i) ? true : false : (@event.next_time.present?) ? (@event.next_time == i) ? true: false : (i == 0) ? true : false
+          = t 'repeat_' << i.to_s
+
+  = f.hidden_field :when, :value => (@event.when.present?) ? @event.when : (params[:event].present?) ? params[:event][:when] : Time.now.to_s
+
+
+  .controls
+    = f.submit t('save'), :class => 'btn btn-success'
+    - if action_name == 'edit' || action_name == 'update'
+      = link_to t('delete'), event_path(@event), :class => 'btn btn-danger', :data => {:confirm => t('sure?')}, :method => 'delete'
+

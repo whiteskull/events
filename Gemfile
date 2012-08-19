@@ -13,6 +13,10 @@ gem 'russian', '~> 0.6.0'
 
 gem 'haml-rails', '~> 0.3.4'
 
+gem 'whenever', :require => false
+
+gem 'twitter-bootstrap-rails'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -23,11 +27,13 @@ group :assets do
   gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-
-  gem 'twitter-bootstrap-rails'
 end
 
 gem 'jquery-rails'
+
+group :production do
+  gem 'pg'
+end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -3,6 +3,19 @@
     .container
       = link_to t('project_name'), root_url, :class => 'brand'
 
-      %ul.nav.pull-right
-        = render 'devise/menu/login_items'
+      .nav-collapse
+        %ul.nav#menu-lang
+          %li.divider-vertical
+          %li{ data: { lang: 'ru' }, class: set_active_locale(:ru) }
+            = link_to image_tag('flags/ru.png'), '#'
+          %li{  data: { lang: 'en' }, class: set_active_locale(:en) }
+            = link_to image_tag('flags/en.png'), '#'
+          %li.divider-vertical
+
+        - if user_signed_in? && controller_name == 'events' && action_name == 'index'
+          = render 'layouts/form_date'
+
+
+        %ul.nav.pull-right
+          = render 'devise/menu/login_items'
 

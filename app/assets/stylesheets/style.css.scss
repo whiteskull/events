@@ -1,7 +1,11 @@
 // tags
+body {
+	background-color: #f4ffec;
+}
 h1 {
 	margin-bottom: 15px;
 }
+
 // override bootstrap
 .form-horizontal {
 	.controls, .actions {
@@ -11,6 +15,7 @@ h1 {
 		width: 160px;
 	}
 }
+
 // devise
 #devise {
 	margin: 0 auto;
@@ -25,6 +30,22 @@ h1 {
 	}
 }
 
+// form select date
+#select-date {
+	margin: 0;
+
+	select {
+		background-color: #9dd7ff;
+		border: none;
+
+		&#select-date_for-calendar_2i {
+			width: 100px
+		}
+		&#select-date_for-calendar_1i {
+			width: 60px
+		}
+	}
+}
 
 
 

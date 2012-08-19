@@ -23,7 +23,7 @@ en:
       sign_in_full: 'Sign in to the System'
       sign_in: 'Sign in'
       sign_out: 'Sign out'
-      sign_up: 'Sign up for Bookmarks'
+      sign_up: 'Sign up'
       update: 'Update'
       forgot_password: 'Forgot password?'
       notices:

@@ -1,0 +1,9 @@
+= form_tag root_path, :method => 'post', :id => 'select-date', :class => 'form-inline pull-left' do
+  = date_select 'select-date', 'for-calendar', :start_year => Time.now.year - 2, :end_year => Time.now.year + 5, :discard_day => true,
+                                               :default => { :year => @date[:year], :month => @date[:month], :day => @date[:day] }
+
+  = hidden_field_tag :check_submit_date, '1'
+
+  = submit_tag t('move'), :class => 'btn btn-primary'
+
+

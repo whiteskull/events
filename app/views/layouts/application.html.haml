@@ -10,7 +10,10 @@
       .row
         - if user_signed_in?
           .span3
-            There is some text...
+            - if @date.present?
+              = render 'events/events_day'
+            - else
+              - # Here is something else
           .span9
             = yield
         - else
