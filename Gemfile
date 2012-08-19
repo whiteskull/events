@@ -5,8 +5,6 @@ gem 'rails', '3.2.8'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-
 gem 'devise', '~> 2.1.2'
 
 gem 'russian', '~> 0.6.0'
@@ -30,6 +28,10 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+group :development do
+  gem 'sqlite3'
+end
 
 group :production do
   gem 'pg'
