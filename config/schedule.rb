@@ -18,6 +18,3 @@ set :output, "#{path}/log/cron_log.log"
 # end
 
 # Learn more: http://github.com/javan/whenever
-every 1.minutes do
-  runner "Event.cron_update_events"
-end
