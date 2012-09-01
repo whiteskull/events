@@ -32,10 +32,10 @@ class EventsController < ApplicationController
     @date[:last_day_current_month] = get_last_day(@date[:year], @date[:month], :current)
 
     # Get all events for the month
-    events = Event.where(:when => ("#{@date[:year]}-#{@date[:month]}-1".to_date)..("#{@date[:year]}-#{@date[:month]}-#{@date[:last_day_current_month]}".to_date.next))
+    events = Event.where(:appointment => ("#{@date[:year]}-#{@date[:month]}-1".to_date)..("#{@date[:year]}-#{@date[:month]}-#{@date[:last_day_current_month]}".to_date.next))
     @events = []
     events.each do |i|
-      d = i.when.day
+      d = i.appointment.day
       unless @events[d].present?
          @events[d] = []
       end

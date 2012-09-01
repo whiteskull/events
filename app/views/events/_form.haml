@@ -19,7 +19,7 @@
                            :checked => (params[:event].present?) ? (i == params[:event][:next_time].to_i) ? true : false : (@event.next_time.present?) ? (@event.next_time == i) ? true: false : (i == 0) ? true : false
           = t 'repeat_' << i.to_s
 
-  = f.hidden_field :when, :value => (@event.when.present?) ? @event.when : (params[:event].present?) ? params[:event][:when] : Time.now.to_s
+  = f.hidden_field :appointment, :value => (@event.appointment.present?) ? @event.appointment : (params[:event].present?) ? params[:event][:appointment] : Time.now.to_s
 
 
   .controls

@@ -19,7 +19,8 @@ en:
   repeat_4: 'Every year'
   public: 'Public'
   success_add_event: 'Your event has been successfully added!'
-  success_edit_event: 'Your event has been successfully deleted!'
+  success_edit_event: 'Your event has been successfully modified!'
+  success_delete_event: 'Your event has been successfully deleted!'
   events_on: 'Events on'
   events_no: 'To this day, no events'
   activerecord:

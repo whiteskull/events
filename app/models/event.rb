@@ -1,11 +1,9 @@
 class Event < ActiveRecord::Base
-  attr_accessible :name, :next_time, :user_id, :when, :public
+  attr_accessible :name, :next_time, :user_id, :appointment, :public
 
   belongs_to :user
 
-  validates :name, :presence => true
+  scope :old, where('appointment <= ?', Date.yesterday.end_of_day).order('created_at desc')
 
-  def cron_update_events
-    abort(YAML::dump('ok'))
-  end
+  validates :name, :presence => true
 end

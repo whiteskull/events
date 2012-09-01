@@ -72,7 +72,7 @@ $(document).ready ->
     	type: 'get',
     	success: (data)->
         $('div#add-event div.modal-body').html(data)
-        $('#event_when').val("#{year}-#{month}-#{day}")
+        $('#event_appointment').val("#{year}-#{month}-#{day}")
         ajax_add_event()
     }
 
