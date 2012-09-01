@@ -16,3 +16,7 @@
 
 # Ignore idea
 /.idea
+
+# Ignore sass-cache
+/.sass-cache
+
