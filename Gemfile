@@ -11,8 +11,6 @@ gem 'russian', '~> 0.6.0'
 
 gem 'haml-rails', '~> 0.3.4'
 
-gem 'whenever', :require => false
-
 gem 'twitter-bootstrap-rails'
 
 # Gems used only for assets and not required
